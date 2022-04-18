@@ -1,5 +1,5 @@
 #include "main.h"
-int *select_mode(const char *format, int i, int *arr);
+int *select_mode(const char *format, int i, int *arr,char *buffer, int *arrlength );
 /**
  * _printf - custom printf function
  * @format : string
@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			p = select_mode(format, i + 1, arr);
+			p = select_mode(format, i + 1, arr, buffer, arrlength);
 			if (p[1] == 'd' || p[1] == 'i')
 				hold = print_int(args, buffer, arrlength);
 			if (p[1] == 's')
@@ -46,9 +46,9 @@ int _printf(const char *format, ...)
 	i = buffchar(buffer, arrlength[1]);
 
 	va_end(args);
-	return (sum);
+	return (arrlength[0] + i);
 }
-int *select_mode(const char *format, int i, int *arr)
+int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength)
 {
 	int j = 0;
 	char specs[] = "sSidbXxuocp";
@@ -69,6 +69,12 @@ int *select_mode(const char *format, int i, int *arr)
 		if (arr[1] > 50)
 		{
 			arr[0] = i;
+			break;
+		}
+		if (format[i] == '%')
+		{
+			buff_push(buffer,'%',arrlength);
+			i++;
 			break;
 		}
 		i++;

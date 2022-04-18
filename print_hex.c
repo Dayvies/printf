@@ -30,7 +30,7 @@ int print_hex(va_list args, char *buffer, int *arrlength)
 	{
 		if (hexs[z] == 0 && l == 0)
 			continue;
-		if (hexs[z] == 1)
+		else
 			l = 1;
 		if (hexs[z] >= 10)
 			sum = sum + buff_push(buffer,hexs[z] + '0' + 39,arrlength);

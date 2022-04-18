@@ -30,7 +30,7 @@ int print_octal(va_list args, char *buffer, int *arrlength)
 	{
 		if (octal[z] == 0 && l == 0)
 			continue;
-		if (octal[z] == 1)
+		else
 			l = 1;
 		sum = sum + buff_push(buffer, octal[z] + '0', arrlength);
 	}

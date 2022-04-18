@@ -11,8 +11,8 @@ int print_hexCaps(va_list args, char *buffer, int *arrlength)
 	int *hexs;
 
 	i = va_arg(args, unsigned int);
-	if (!i)
-		return buff_push(buffer,'0', arrlength);
+	/*if (!i)
+		return buff_push(buffer,'0', arrlength);*/
 	z = i;
 	while (z > 0)
 	{
@@ -30,7 +30,7 @@ int print_hexCaps(va_list args, char *buffer, int *arrlength)
 	{
 		if (hexs[z] == 0 && l == 0)
 			continue;
-		if (hexs[z] == 1)
+		else
 			l = 1;
 		if (hexs[z] >= 10)
 			sum = sum + buff_push(buffer, hexs[z] + '0' + 7, arrlength);
