@@ -11,8 +11,8 @@ int print_string(va_list args, char *buffer, int *arrlength)
 	char *str;
 
 	str = va_arg(args, char *);
-	if (!str)
-		str = "(null)";
+	/*if (!str)
+		str = "(null)";*/
 	while (str[i])
 	{
 		j = buff_push(buffer, str[i], arrlength);
