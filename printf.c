@@ -8,7 +8,7 @@ int *select_mode(const char *format, int i, int *arr,char *buffer, int *arrlengt
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, hold, sum = 0, arr[2];
+	int i = 0, arr[2];
 	int arrlength[2] = {0, 0};
 	int *p;
 	char buffer[1024];
@@ -25,26 +25,26 @@ int _printf(const char *format, ...)
 		{
 			p = select_mode(format, i + 1, arr, buffer, arrlength);
 			if (p[1] == 'd' || p[1] == 'i')
-				hold = print_int(args, buffer, arrlength);
+				print_int(args, buffer, arrlength);
 			if (p[1] == 's')
-				hold = print_string(args, buffer, arrlength);
+				print_string(args, buffer, arrlength);
 			if (p[1] == 'c')
-				hold = print_char(args, buffer, arrlength);
+				print_char(args, buffer, arrlength);
 			if (p[1] == 'b')
-				hold = print_binary(args, buffer, arrlength);
+				print_binary(args, buffer, arrlength);
 			if (p[1] == 'u')
-				hold = print_uint(args, buffer, arrlength);
+				print_uint(args, buffer, arrlength);
 			if (p[1] == 'o')
-				hold = print_octal(args, buffer, arrlength);
+				print_octal(args, buffer, arrlength);
 			if (p[1] == 'x')
-				hold = print_hex(args, buffer, arrlength);
+				print_hex(args, buffer, arrlength);
 			if (p[1] == 'X')
-				hold = print_hexCaps(args, buffer, arrlength);
+				print_hexCaps(args, buffer, arrlength);
 			i = p[0];
-			sum = sum + hold;
+			
 		}
 		else
-			sum = sum + buff_push(buffer, format[i], arrlength);
+			buff_push(buffer, format[i], arrlength);
 		i++;
 	}
 	i = buffchar(buffer, arrlength[1]);
@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength)
 {
 	int j = 0;
-	char specs[] = "sSidbXxuocp";
+	char specs[12] = "sSidbXxuocp";
 	arr[0] = i;
 	arr[1] = 0;
 
