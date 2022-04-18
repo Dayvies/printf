@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength)
 {
 	int j = 0;
-	char specs[12] = "sSidbXxuocp";
+	char specs[12] = "di";
 	arr[0] = i;
 	arr[1] = 0;
 
