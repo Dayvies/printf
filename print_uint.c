@@ -5,12 +5,14 @@
  * @args : args
  * Return : nu,ber of int if succesfull
  */
-int print_uint(va_list args)
+int print_uint(va_list args, char *buffer, int *arrlength)
 {
 	unsigned int i = 0, j = 1, z, l = 0;
 	int sum = 0;
-
-	i = va_arg(args, unsigned int);
+	
+	i = va_arg(args,unsigned int);
+	if (!i)
+		return buff_push(buffer, '0', arrlength);
 	z = i;
 	while (z > 10)
 	{
@@ -20,7 +22,7 @@ int print_uint(va_list args)
 	}
 	for (z = 0; z <= l; z++)
 	{
-		sum = sum + _putchar((i / j) + '0');
+		sum = sum + buff_push(buffer, (i / j) + '0', arrlength);
 		i = i % j;
 		j = j / 10;
 	}

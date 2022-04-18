@@ -5,14 +5,14 @@
  * @args : args
  * Return : number of printed characters
  */
-int print_hexCaps(va_list args)
+int print_hexCaps(va_list args, char *buffer, int *arrlength)
 {
 	unsigned int i = 0, j = 0, z, l = 0, sum = 0;
 	int *hexs;
 
 	i = va_arg(args, unsigned int);
-	if (!i)
-		return (_putchar('0'));
+	/*if (!i)
+		return buff_push(buffer,'0', arrlength);*/
 	z = i;
 	while (z > 0)
 	{
@@ -30,12 +30,12 @@ int print_hexCaps(va_list args)
 	{
 		if (hexs[z] == 0 && l == 0)
 			continue;
-		if (hexs[z] == 1)
+		else
 			l = 1;
 		if (hexs[z] >= 10)
-			sum = sum + _putchar(hexs[z] + '0' + 7);
+			sum = sum + buff_push(buffer, hexs[z] + '0' + 7, arrlength);
 		else
-			sum = sum + _putchar(hexs[z] + '0');
+			sum = sum + buff_push(buffer, hexs[z] + '0', arrlength);
 	}
 	free(hexs);
 	return (sum);

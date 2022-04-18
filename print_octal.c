@@ -5,14 +5,14 @@
  * @args : args
  * Return : number of printed characters
  */
-int print_octal(va_list args)
+int print_octal(va_list args, char *buffer, int *arrlength)
 {
 	unsigned int i = 0, j = 0, z, l = 0, sum = 0;
 	int *octal;
 
 	i = va_arg(args, unsigned int);
 	if (!i)
-		return (_putchar('0'));
+		return buff_push(buffer, '0', arrlength);
 	z = i;
 	while (z > 0)
 	{
@@ -30,9 +30,9 @@ int print_octal(va_list args)
 	{
 		if (octal[z] == 0 && l == 0)
 			continue;
-		if (octal[z] == 1)
+		else
 			l = 1;
-		sum = sum + _putchar(octal[z] + '0');
+		sum = sum + buff_push(buffer, octal[z] + '0', arrlength);
 	}
 	free(octal);
 	return (sum);

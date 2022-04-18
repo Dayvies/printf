@@ -5,12 +5,12 @@
  * @args : args
  * Return : 1 if succesfull
  */
-int print_char(va_list args)
+int print_char(va_list args, char *buffer, int *arrlength)
 {
 	int i = 0;
 
 	
-	i = _putchar(va_arg(args, int));
+	i = buff_push(buffer , va_arg(args,int), arrlength);
 	
 	if (i == 1)
 		return 1;
