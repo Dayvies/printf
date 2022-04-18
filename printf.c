@@ -1,5 +1,5 @@
 #include "main.h"
-int *select_mode(const char *format, int i, int *arr,char *buffer, int *arrlength );
+int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength);
 /**
  * _printf - custom printf function
  * @format : string
@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	while (format[i] )
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -41,7 +41,6 @@ int _printf(const char *format, ...)
 			if (p[1] == 'X')
 				print_hexCaps(args, buffer, arrlength);
 			i = p[0];
-			
 		}
 		else
 			buff_push(buffer, format[i], arrlength);
@@ -52,13 +51,14 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (arrlength[0] + i);
 }
-int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength)
+int *select_mode(const char *format, int i, int *arr,
+		 char *buffer, int *arrlength)
 {
 	int j = 0;
 	char specs[12] = "dixXscuob";
-	arr[0] = i;
-	arr[1] = 0;
 
+	arr[1] = 0;
+	arr[0] = i;
 	while (format[i])
 	{
 		while (specs[j])
@@ -77,11 +77,17 @@ int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrleng
 		}
 		if (format[i] == '%')
 		{
-			buff_push(buffer,'%',arrlength);
-			i++;
+			buff_push(buffer, '%', arrlength);
+			break;
+		}
+		else 
+		{
+			buff_push(buffer, '%', arrlength);
+			arr[0]--;
 			break;
 		}
 		i++;
 	}
+	
 	return (arr);
 }
