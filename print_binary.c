@@ -11,6 +11,8 @@ int print_binary(va_list args, char *buffer, int *arrlength )
 	int *b;
 
 	i = va_arg(args, unsigned int);
+	if (!i)
+		return buff_push(buffer, '0', arrlength);
 	z = i;
 	while (z > 0)
 	{
