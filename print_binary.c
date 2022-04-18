@@ -5,14 +5,12 @@
  * @args : args
  * Return : number of printed characters
  */
-int print_binary(va_list args, char *buffer, int *arrlength )
+int print_binary(va_list args)
 {
 	unsigned int i = 0, j = 0, z, l = 0, sum = 0;
 	int *b;
 
 	i = va_arg(args, unsigned int);
-	if (!i)
-		return buff_push(buffer, '0', arrlength);
 	z = i;
 	while (z > 0)
 	{
@@ -31,7 +29,7 @@ int print_binary(va_list args, char *buffer, int *arrlength )
 			continue;
 		if (b[z] == 1)
 			l = 1;
-		sum = sum + buff_push(buffer, b[z] + '0', arrlength);
+		sum = sum + _putchar(b[z] + '0');
 	}
 	free(b);
 	return (sum);
