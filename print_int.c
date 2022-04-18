@@ -21,7 +21,6 @@ int print_int(va_list args, char *buffer, int *arrlength)
 		z = z * -1;
 	}
 	m = z;
-	printf("this is m: %d\n", m);
 	while (z > 9)
 	{
 		z = z / 10;
