@@ -9,7 +9,7 @@
  */
 int print_int(va_list args, char *buffer, int *arrlength)
 {
-	int i = 0, j = 1, l = 0, sum = 0;
+	int i = 0, j = 1, sum = 0;
 	unsigned int z, m, l = 0;
 	i = va_arg(args, int);
 	/*if (!i)
@@ -18,10 +18,10 @@ int print_int(va_list args, char *buffer, int *arrlength)
 	if (i < 0)
 	{
 		sum = sum + buff_push(buffer, '-', arrlength);
-		z = z * -1;	
+		z = z * -1;
 	}
 	m = z;
-	printf("this is m: %d\n",m);
+	printf("this is m: %d\n", m);
 	while (z > 9)
 	{
 		z = z / 10;
@@ -30,7 +30,7 @@ int print_int(va_list args, char *buffer, int *arrlength)
 	}
 	for (z = 0; z <= l; z++)
 	{
-		sum = sum + buff_push(buffer, ((m/ j) + 48), arrlength);
+		sum = sum + buff_push(buffer, ((m / j) + 48), arrlength);
 		m = m % j;
 		j = j / 10;
 	}
