@@ -12,8 +12,8 @@ int print_int(va_list args, char *buffer, int *arrlength)
 	int i = 0, j = 1, z, l = 0, sum = 0;
 
 	i = va_arg(args, int);
-	if (!i)
-		return buff_push(buffer, '0', arrlength);
+	/*if (!i)
+		return buff_push(buffer, '0', arrlength);*/
 	if (i < 0)
 	{
 		i = i * -1;
