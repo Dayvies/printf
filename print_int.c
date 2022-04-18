@@ -20,7 +20,7 @@ int print_int(va_list args, char *buffer, int *arrlength)
 		sum = sum + buff_push(buffer, '-', arrlength);
 	}
 	z = i;
-	while (z > 10)
+	while (z > 1)
 	{
 		z = z / 10;
 		j = j * 10;

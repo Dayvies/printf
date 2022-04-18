@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	while (format[i])
+	while (format[i] )
 	{
 		if (format[i] == '%')
 		{
@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength)
 {
 	int j = 0;
-	char specs[12] = "di";
+	char specs[12] = "dixXscuob";
 	arr[0] = i;
 	arr[1] = 0;
 

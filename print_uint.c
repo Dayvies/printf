@@ -14,7 +14,7 @@ int print_uint(va_list args, char *buffer, int *arrlength)
 	if (!i)
 		return buff_push(buffer, '0', arrlength);
 	z = i;
-	while (z > 10)
+	while (z > 1)
 	{
 		z = z / 10;
 		j = j * 10;
