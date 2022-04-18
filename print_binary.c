@@ -20,6 +20,8 @@ int print_binary(va_list args, char *buffer, int *arrlength )
 		j++;
 	}
 	b = malloc(sizeof(int) * j);
+	if (b == NULL)
+		return (0);
 	for (z = j - 1; i > 0; z--)
 	{
 		b[z] = i % 2;
@@ -29,7 +31,7 @@ int print_binary(va_list args, char *buffer, int *arrlength )
 	{
 		if ( b[z] == 0 && l == 0 )
 			continue;
-		if (b[z] == 1)
+		else
 			l = 1;
 		sum = sum + buff_push(buffer, b[z] + '0', arrlength);
 	}
