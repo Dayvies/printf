@@ -1,7 +1,7 @@
 #include "main.h"
-int print_str(char *s, char *buffer, int *arrlength);
-int getlength6(ul *hexs, int j);
-void printa(ul  *hexs, char *buffer, int *arrlength, int j);
+int print_str(char *s, char *buffer, int *arrlength, ul r, ul *arr);
+int getlength6(ul *hexs, int j, ul *arr);
+void printa(ul *hexs, char *buffer, int *arrlength, int j, ul *arr);
 int print_spaces7(ul *arr, int len, int p, char *buffer, int *length);
 /**
  * print_binary - print binary from unsigned int
@@ -10,7 +10,7 @@ int print_spaces7(ul *arr, int len, int p, char *buffer, int *length);
  */
 int print_address(va_list args, char *buffer, int *arrlength, ul *arr)
 {
-	unsigned long int i ,len, j = 0, z, ib;
+	unsigned long int i, len, j = 0, z, ib;
 	char *str;
 	unsigned long int *hexs;
 
@@ -36,20 +36,29 @@ int print_address(va_list args, char *buffer, int *arrlength, ul *arr)
 		hexs[z] = i % 16;
 		i = i / 16;
 	}
-	len = getlength6(hexs, j);
-	print_spaces7(arr,len,0,buffer, arrlength);
+	len = getlength6(hexs, j, arr);
+	print_spaces7(arr, len, 0, buffer, arrlength);
 	if (ib == 0)
-		print_str(str, buffer, arrlength);
-	if ((arr[6] == 0 ||  arr[4] == 1 || arr[7] < len) && (ib > 0))
-		print_str(str, buffer, arrlength);
-	printa(hexs,buffer, arrlength, j);
-	print_spaces7(arr,len,1,buffer, arrlength);
+		print_str(str, buffer, arrlength, 0, arr);
+
+	if ((arr[6] == 0 || arr[4] == 1 || arr[7] < len) && (ib > 0))
+		print_str(str, buffer, arrlength, 1, arr);
+	printa(hexs, buffer, arrlength, j, arr);
+	print_spaces7(arr, len, 1, buffer, arrlength);
 	free(hexs);
 	return (1);
 }
-int print_str(char *s, char *buffer, int *arrlength)
+int print_str(char *s, char *buffer, int *arrlength, ul r, ul *arr)
 {
 	int i = 0;
+
+	if (r == 1)
+	{
+		if (arr[5] == 1)
+			buff_push(buffer, '+', arrlength);
+		if (arr[3] == 1 && arr[5] == 0)
+			buff_push(buffer, ' ', arrlength);
+	}
 
 	while (s[i])
 	{
@@ -63,7 +72,7 @@ int print_str(char *s, char *buffer, int *arrlength)
  * @z: number
  * Return: length
  */
-int getlength6(ul *hexs, int j)
+int getlength6(ul *hexs, int j, ul *arr)
 {
 	int i = 0, l = 0, count = 0;
 	for (i = 0; i < j; i++)
@@ -76,14 +85,17 @@ int getlength6(ul *hexs, int j)
 		if (l == 1)
 			count++;
 	}
-		count = count + 2;
+	count = count + 2;
+	if (arr[5] == 1 || arr[3] == 1)
+		count++;
 	if (j == 0)
 		count = 5;
 	return (count);
 }
-void printa(ul *hexs, char *buffer, int *arrlength, int j)
-{	
-	int z , l = 0;
+void printa(ul *hexs, char *buffer, int *arrlength, int j, ul *arr)
+{
+	int z, l = 0;
+
 	for (z = 0; z < j; z++)
 	{
 		if (hexs[z] == 0 && l == 0)
@@ -95,7 +107,6 @@ void printa(ul *hexs, char *buffer, int *arrlength, int j)
 		else
 			buff_push(buffer, hexs[z] + '0', arrlength);
 	}
-
 }
 int print_spaces7(ul *arr, int len, int p, char *buffer, int *length)
 {
@@ -104,7 +115,7 @@ int print_spaces7(ul *arr, int len, int p, char *buffer, int *length)
 
 	if (arr[6] == 1 && p == 0)
 		c = '0';
-	if (len >= (int) arr[7] || arr[7] == 0)
+	if (len >= (int)arr[7] || arr[7] == 0)
 		return (0);
 	if (p == 0 && arr[4] == 1)
 		return (0);
@@ -112,11 +123,16 @@ int print_spaces7(ul *arr, int len, int p, char *buffer, int *length)
 		return (0);
 	if (arr[6] == 1 && arr[4] == 0)
 	{
+		if (arr[5] == 1)
+			buff_push(buffer, '+', length);
+		if (arr[3] == 1 && arr[5] == 0)
+			buff_push(buffer, ' ', length);
+
 		buff_push(buffer, '0', length);
 		buff_push(buffer, 'x', length);
 	}
 	j = arr[7] - len;
 	for (z = 0; z < j; z++)
-		buff_push(buffer, c, length);	
+		buff_push(buffer, c, length);
 	return (0);
 }
