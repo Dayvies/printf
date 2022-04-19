@@ -15,7 +15,8 @@ int print_address(va_list args, char *buffer, int *arrlength)
 	i = va_arg(args, unsigned long int);
 	/*if (!i || (int) i == 0)
 		return (print_str(str, buffer, arrlength));*/
-	print_str("0x", buffer, arrlength);
+	str = "0x";
+	print_str(str, buffer, arrlength);
 	z = i;
 	while (z > 0)
 	{
