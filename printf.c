@@ -9,7 +9,7 @@ int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr);
  */
 int _printf(const char *format, ...)
 {
-	int i = 0,z;
+	int i = 0, z;
 	ul arr[9];
 	int arrlength[2] = {0, 0};
 	ul *p;
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 	return (arrlength[0] + i);
 }
 ul *select_mode(const char *format, int i, ul *arr,
-		 char *buffer, int *arrlength)
+		char *buffer, int *arrlength)
 {
 	int j = 0;
 	char specs[12] = "dixXsScuobpr";
@@ -77,7 +77,7 @@ ul *select_mode(const char *format, int i, ul *arr,
 			arr[0]--;
 			break;
 		}
-		
+
 		i++;
 	}
 	return (arr);
@@ -104,7 +104,7 @@ int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr)
 		print_String(args, buffer, arrlength);
 	if (p[1] == 'p')
 		print_address(args, buffer, arrlength, arr);
-	if (p[1] == 'p')
-		print_rev(args,buffer,arrlength);
+	if (p[1] == 'r')
+		print_rev(args, buffer, arrlength);
 	return (1);
 }
