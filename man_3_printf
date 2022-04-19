@@ -1,0 +1,51 @@
+\" Manpage for _printf.
+.\" Contact Davyies and Nkaranja @github
+.TH man 8 "18th April  2022" "1.0" "_printf man page"
+.SH NAME
+_printf \- prints for STDOUT with many specifiers.
+.SH SYNOPSIS
+_printf [INPUT STREAM]
+.SH DESCRIPTION
+_printf is a variadic function that easens printing in C language
+.SH OPTIONS
+_printf takes the following options to format the output:
+.TP
+.B -%c
+Prints a character into the INPUT STREAM.
+.TP
+.B -%s
+Prints a string into the INPUT STREAM.
+.TP
+.B -%i
+Prints an integer into the INPUT STREAM.
+.TP
+.B -%d
+Prints an double into the INPUT STREAM.
+.TP
+.B -%u
+Prints an unsigned int into the INPUT STREAM.
+.TP
+.B -%o
+Prints to octal into the INPUT STREAM.
+.TP
+.B -%x
+Prints mini-hexal into the INPUT STREAM.
+.TP
+.B -%X
+Prints to hexal into the INPUT STREAM.
+.TP
+.B -%b
+Prints to binary into the INPUT STREAM.
+.TP
+.B -%R
+Prints to rot13 into the INPUT STREAM.
+.TP
+.B -%r
+Prints to reverse a stringi nto the INPUT STREAM.
+.SH SEE ALSO 
+Uses a local buffer of 1024 characters to print 
+.SH BUGS
+Not many except for field width.Still hard to pass ALX checker.
+.SH AUTHOR
+@Davyies Github
+
