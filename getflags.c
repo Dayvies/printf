@@ -8,7 +8,7 @@ int isnum(char c);
  * i: current position
  *
  */
-int get_flag(const char *f, int *arr, int i)
+int get_flag(const char *f, ul *arr, int i)
 {
 	if (f[i] == '#' && isnum(f[i - 1]) == 0)
 	{

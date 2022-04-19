@@ -1,13 +1,13 @@
 #include "main.h"
-int getlength5(int *arr, int *octal, int j);
-int print_spaces6(int *arr, int len, int period, char *buffer, int *arrlength);
+int getlength5(ul *arr, int *octal, int j);
+int print_spaces6(ul *arr, int len, int period, char *buffer, int *arrlength);
 void printo(int *octal, char *buffer, int *arrlength, int j);
 /**
  * print_binary - print binary from unsigned int
  * @args : args
  * Return : number of printed characters
  */
-int print_octal(va_list args, char *buffer, int *arrlength, int *arr)
+int print_octal(va_list args, char *buffer, int *arrlength, ul *arr)
 {
 	unsigned int i = 0, j = 0, z,len, ib;
 	int *octal;
@@ -50,7 +50,7 @@ int print_octal(va_list args, char *buffer, int *arrlength, int *arr)
  * @z: number
  * Return: length
  */
-int getlength5(int *arr, int *octal, int j)
+int getlength5(ul *arr, int *octal, int j)
 {
 	int i = 0, l = 0, count = 0;
 	for (i = 0; i < j; i++)
@@ -75,14 +75,14 @@ int getlength5(int *arr, int *octal, int j)
  * @arrlength : arrlength
  * Return: int
  */
-int print_spaces6(int *arr, int len, int period, char *buffer, int *arrlength)
+int print_spaces6(ul *arr, int len, int period, char *buffer, int *arrlength)
 {
 	int j, z;
 	char c = ' ';
 
 	if (arr[6] == 1 && period == 0)
 		c = '0';
-	if (len >= arr[7] || arr[7] == 0)
+	if (len >= (int) arr[7]|| arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);

@@ -1,11 +1,11 @@
 #include "main.h"
-int print_space(int *arr, int len, int period, char *buffer, int *arrlength);
+int print_space(ul *arr, int len, int period, char *buffer, int *arrlength);
 /**
  * print_string - print a string char
  * @args : args
  * Return : 1 if succesfull
  */
-int print_string(va_list args, char *buffer, int *arrlength, int *arr)
+int print_string(va_list args, char *buffer, int *arrlength, ul *arr)
 {
 	int i = 0, j = 0;
 	char *str;
@@ -25,11 +25,11 @@ int print_string(va_list args, char *buffer, int *arrlength, int *arr)
 	print_space(arr,j,1, buffer, arrlength);
 	return (0);
 }
-int print_space(int *arr, int len, int period, char *buffer, int *arrlength)
+int print_space(ul *arr, int len, int period, char *buffer, int *arrlength)
 {
 	
 	int j, z;
-	if (len >= arr[7] || arr[7] == 0)
+	if (len >= (int) arr[7] || arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);

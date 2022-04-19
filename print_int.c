@@ -1,6 +1,6 @@
 #include "main.h"
-int getlength(unsigned int z, int negative, int *arr, int *j);
-int print_spaces2(int *arr, int len, int period, char *buffer, int *arrlength);
+int getlength(unsigned int z, int negative, ul *arr, int *j);
+int print_spaces2(ul *arr, int len, int period, char *buffer, int *arrlength);
 
 /**
  * print_int - print an integer
@@ -9,7 +9,7 @@ int print_spaces2(int *arr, int len, int period, char *buffer, int *arrlength);
  * @arrlength: buffer length
  * Return : nu,ber of int if succesfull
  */
-int print_int(va_list args, char *buffer, int *arrlength, int *arr)
+int print_int(va_list args, char *buffer, int *arrlength, ul *arr)
 {
 	int i = 0, j = 1, len = 0, negative = 0, period = 0;
 	unsigned int z, m;
@@ -48,7 +48,7 @@ int print_int(va_list args, char *buffer, int *arrlength, int *arr)
    * @z: number
    * Return: length
    */
-int getlength(unsigned int z, int negative, int *arr, int *j)
+int getlength(unsigned int z, int negative, ul *arr, int *j)
 {
 	int l = 0;
 	while (z > 9)
@@ -71,14 +71,14 @@ int getlength(unsigned int z, int negative, int *arr, int *j)
  * @arrlength : arrlength
  * Return: int 
  */
-int print_spaces2(int *arr, int len, int period, char *buffer, int *arrlength)
+int print_spaces2(ul *arr, int len, int period, char *buffer, int *arrlength)
 {
 	int j, z;
 	char c = ' ';
 
 	if (arr[6] == 1 && arr[4] == 0)
 		c = '0';
-	if (len >= arr[7] || arr[7] == 0)
+	if (len >= (int) arr[7] || arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);

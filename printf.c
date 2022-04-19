@@ -1,6 +1,6 @@
 #include "main.h"
-int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength);
-int redirect(va_list args, int *p, char *buffer, int *arrlength, int* arr);
+ul *select_mode(const char *format, int i, unsigned long int *arr, char *buffer, int *arrlength);
+int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr);
 /**
  * _printf - custom printf function
  * @format : string
@@ -9,9 +9,10 @@ int redirect(va_list args, int *p, char *buffer, int *arrlength, int* arr);
  */
 int _printf(const char *format, ...)
 {
-	int i = 0,z, arr[9];
+	int i = 0,z;
+	ul arr[9];
 	int arrlength[2] = {0, 0};
-	int *p;
+	ul *p;
 	char buffer[1024];
 	va_list args;
 
@@ -39,7 +40,7 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (arrlength[0] + i);
 }
-int *select_mode(const char *format, int i, int *arr,
+ul *select_mode(const char *format, int i, ul *arr,
 		 char *buffer, int *arrlength)
 {
 	int j = 0;
@@ -81,7 +82,7 @@ int *select_mode(const char *format, int i, int *arr,
 	}
 	return (arr);
 }
-int redirect(va_list args, int *p, char *buffer, int *arrlength, int *arr)
+int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr)
 {
 	if (p[1] == 'd' || p[1] == 'i')
 		print_int(args, buffer, arrlength, arr);

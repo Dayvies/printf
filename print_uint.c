@@ -1,12 +1,12 @@
 #include "main.h"
 int getlength2(unsigned int z, unsigned int *j);
-int print_spaces3(int *arr, int len, int period, char *buffer, int *arrlength);
+int print_spaces3(ul *arr, int len, int period, char *buffer, int *arrlength);
 /**
  * print_uint - print an undigned integer
  * @args : args
  * Return : nu,ber of int if succesfull
  */
-int print_uint(va_list args, char *buffer, int *arrlength, int *arr)
+int print_uint(va_list args, char *buffer, int *arrlength, ul *arr)
 {
 	unsigned int i = 0, j = 1, z, l = 0, period = 0;
 	unsigned int *p;
@@ -55,14 +55,14 @@ int getlength2(unsigned int z, unsigned int *j)
  * @arrlength : arrlength
  * Return: int
  */
-int print_spaces3(int *arr, int len, int period, char *buffer, int *arrlength)
+int print_spaces3(ul *arr, int len, int period, char *buffer, int *arrlength)
 {
 	int j, z;
 	char c = ' ';
 
 	if (arr[6] == 1 && period == 0)
 		c = '0';
-	if (len >= arr[7] || arr[7] == 0)
+	if (len >= (int) arr[7]|| arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);

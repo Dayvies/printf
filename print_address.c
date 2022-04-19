@@ -1,14 +1,14 @@
 #include "main.h"
 int print_str(char *s, char *buffer, int *arrlength);
-int getlength6( unsigned long int *hexs, int j);
-void printa(unsigned long int *hexs, char *buffer, int *arrlength, int j);
-int print_spaces7(int *arr, int len, int p, char *buffer, int *length);
+int getlength6(ul *hexs, int j);
+void printa(ul  *hexs, char *buffer, int *arrlength, int j);
+int print_spaces7(ul *arr, int len, int p, char *buffer, int *length);
 /**
  * print_binary - print binary from unsigned int
  * @args : args
  * Return : number of printed characters
  */
-int print_address(va_list args, char *buffer, int *arrlength, int *arr)
+int print_address(va_list args, char *buffer, int *arrlength, ul *arr)
 {
 	unsigned long int i ,len, j = 0, z, ib;
 	char *str;
@@ -40,7 +40,7 @@ int print_address(va_list args, char *buffer, int *arrlength, int *arr)
 	print_spaces7(arr,len,0,buffer, arrlength);
 	if (ib == 0)
 		print_str(str, buffer, arrlength);
-	if ((arr[6] == 0 ||  arr[4] == 1 || arr[7] < (int) len) && (ib > 0))
+	if ((arr[6] == 0 ||  arr[4] == 1 || arr[7] < len) && (ib > 0))
 		print_str(str, buffer, arrlength);
 	printa(hexs,buffer, arrlength, j);
 	print_spaces7(arr,len,1,buffer, arrlength);
@@ -63,7 +63,7 @@ int print_str(char *s, char *buffer, int *arrlength)
  * @z: number
  * Return: length
  */
-int getlength6(unsigned long int *hexs, int j)
+int getlength6(ul *hexs, int j)
 {
 	int i = 0, l = 0, count = 0;
 	for (i = 0; i < j; i++)
@@ -81,7 +81,7 @@ int getlength6(unsigned long int *hexs, int j)
 		count = 5;
 	return (count);
 }
-void printa(unsigned long int *hexs, char *buffer, int *arrlength, int j)
+void printa(ul *hexs, char *buffer, int *arrlength, int j)
 {	
 	int z , l = 0;
 	for (z = 0; z < j; z++)
@@ -97,14 +97,14 @@ void printa(unsigned long int *hexs, char *buffer, int *arrlength, int j)
 	}
 
 }
-int print_spaces7(int *arr, int len, int p, char *buffer, int *length)
+int print_spaces7(ul *arr, int len, int p, char *buffer, int *length)
 {
 	int j, z;
 	char c = ' ';
 
 	if (arr[6] == 1 && p == 0)
 		c = '0';
-	if (len >= arr[7] || arr[7] == 0)
+	if (len >= (int) arr[7] || arr[7] == 0)
 		return (0);
 	if (p == 0 && arr[4] == 1)
 		return (0);

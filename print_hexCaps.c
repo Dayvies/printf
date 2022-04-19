@@ -1,13 +1,13 @@
 #include "main.h"
-int print_spaces5(int *arr, int len, int p, char *buffer, int *length);
-int getlength4(int *arr, int *hexs, int j);
+int print_spaces5(ul *arr, int len, int p, char *buffer, int *length);
+int getlength4(ul *arr, int *hexs, int j);
 void print2(int *hexs, char *buffer, int *arrlength, int j);
 /**
  * print_binary - print binary from unsigned int
  * @args : args
  * Return : number of printed characters
  */
-int print_hexCaps(va_list args, char *buffer, int *arrlength, int *arr)
+int print_hexCaps(va_list args, char *buffer, int *arrlength, ul *arr)
 {
 	unsigned int i = 0, j = 0, z, len, ib;
 	int *hexs;
@@ -52,7 +52,7 @@ int print_hexCaps(va_list args, char *buffer, int *arrlength, int *arr)
  * @z: number
  * Return: length
  */
-int getlength4(int *arr, int *hexs, int j)
+int getlength4(ul *arr, int *hexs, int j)
 {
 	int i = 0, l = 0, count = 0;
 	for (i = 0; i < j; i++)
@@ -78,14 +78,14 @@ int getlength4(int *arr, int *hexs, int j)
  * @arrlength : arrlength
  * Return: int
  */
-int print_spaces5(int *arr, int len, int p, char *buffer, int *length)
+int print_spaces5(ul *arr, int len, int p, char *buffer, int *length)
 {
 	int j, z;
 	char c = ' ';
 
 	if (arr[6] == 1 && p == 0)
 		c = '0';
-	if (len >= arr[7] || arr[7] == 0)
+	if (len >= (int) arr[7] || arr[7] == 0)
 		return (0);
 	if (p == 0 && arr[4] == 1)
 		return (0);
