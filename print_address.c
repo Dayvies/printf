@@ -1,7 +1,7 @@
 #include "main.h"
 int print_str(char *s, char *buffer, int *arrlength, ul r, ul *arr);
 int getlength6(ul *hexs, int j, ul *arr);
-void printa(ul *hexs, char *buffer, int *arrlength, int j, ul *arr);
+void printa(ul *hexs, char *buffer, int *arrlength, int j);
 int print_spaces7(ul *arr, int len, int p, char *buffer, int *length);
 /**
  * print_binary - print binary from unsigned int
@@ -92,7 +92,7 @@ int getlength6(ul *hexs, int j, ul *arr)
 		count = 5;
 	return (count);
 }
-void printa(ul *hexs, char *buffer, int *arrlength, int j, ul *arr)
+void printa(ul *hexs, char *buffer, int *arrlength, int j)
 {
 	int z, l = 0;
 
