@@ -12,7 +12,7 @@ int print_hexCaps(va_list args, char *buffer, int *arrlength)
 
 	i = va_arg(args, unsigned int);
 	if (!i)
-		return buff_push(buffer,'0', arrlength);
+		return buff_push(buffer, '0', arrlength);
 	z = i;
 	while (z > 0)
 	{

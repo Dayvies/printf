@@ -1,5 +1,6 @@
 #include "main.h"
 int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength);
+int redirect(va_list args, int *p, char *buffer, int *arrlength);
 /**
  * _printf - custom printf function
  * @format : string
@@ -24,22 +25,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			p = select_mode(format, i + 1, arr, buffer, arrlength);
-			if (p[1] == 'd' || p[1] == 'i')
-				print_int(args, buffer, arrlength);
-			if (p[1] == 's')
-				print_string(args, buffer, arrlength);
-			if (p[1] == 'c')
-				print_char(args, buffer, arrlength);
-			if (p[1] == 'b')
-				print_binary(args, buffer, arrlength);
-			if (p[1] == 'u')
-				print_uint(args, buffer, arrlength);
-			if (p[1] == 'o')
-				print_octal(args, buffer, arrlength);
-			if (p[1] == 'x')
-				print_hex(args, buffer, arrlength);
-			if (p[1] == 'X')
-				print_hexCaps(args, buffer, arrlength);
+			redirect(args, p, buffer, arrlength);
 			i = p[0];
 		}
 		else
@@ -55,7 +41,7 @@ int *select_mode(const char *format, int i, int *arr,
 		 char *buffer, int *arrlength)
 {
 	int j = 0;
-	char specs[12] = "dixXscuob";
+	char specs[12] = "dixXsScuob";
 
 	arr[1] = 0;
 	arr[0] = i;
@@ -80,7 +66,7 @@ int *select_mode(const char *format, int i, int *arr,
 			buff_push(buffer, '%', arrlength);
 			break;
 		}
-		else 
+		else
 		{
 			buff_push(buffer, '%', arrlength);
 			arr[0]--;
@@ -88,6 +74,28 @@ int *select_mode(const char *format, int i, int *arr,
 		}
 		i++;
 	}
-	
 	return (arr);
+}
+int redirect(va_list args, int *p, char *buffer, int *arrlength)
+{
+
+	if (p[1] == 'd' || p[1] == 'i')
+		print_int(args, buffer, arrlength);
+	if (p[1] == 's')
+		print_string(args, buffer, arrlength);
+	if (p[1] == 'c')
+		print_char(args, buffer, arrlength);
+	if (p[1] == 'b')
+		print_binary(args, buffer, arrlength);
+	if (p[1] == 'u')
+		print_uint(args, buffer, arrlength);
+	if (p[1] == 'o')
+		print_octal(args, buffer, arrlength);
+	if (p[1] == 'x')
+		print_hex(args, buffer, arrlength);
+	if (p[1] == 'X')
+		print_hexCaps(args, buffer, arrlength);
+	if (p[1] == 'S')
+		print_String(args, buffer, arrlength);
+	return (1);
 }
