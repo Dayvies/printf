@@ -7,14 +7,14 @@ int print_str(char *s, char *buffer, int *arrlength);
  */
 int print_address(va_list args, char *buffer, int *arrlength)
 {
-	unsigned long int i = 0, j = 0, z, l = 0, sum = 0;
+	unsigned long int i = 0, j = 0, z, l = 0;
 	char *str;
 	int *hexs;
 
 	str = "(nil)";
 	i = va_arg(args, unsigned long int);
-	/*if (!i || (int) i == 0)
-		return (print_str(str, buffer, arrlength));*/
+	if (!i || i == 0)
+		return (print_str(str, buffer, arrlength));
 	str = "0x";
 	print_str(str, buffer, arrlength);
 	z = i;
@@ -37,12 +37,12 @@ int print_address(va_list args, char *buffer, int *arrlength)
 		else
 			l = 1;
 		if (hexs[z] >= 10)
-			sum = sum + buff_push(buffer, hexs[z] + '0' + 39, arrlength);
+			buff_push(buffer, hexs[z] + '0' + 39, arrlength);
 		else
-			sum = sum + buff_push(buffer, hexs[z] + '0', arrlength);
+			buff_push(buffer, hexs[z] + '0', arrlength);
 	}
 	free(hexs);
-	return (sum);
+	return (1);
 }
 int print_str(char *s, char *buffer, int *arrlength)
 {
