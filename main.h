@@ -16,7 +16,7 @@ int print_octal(va_list args, char *buffer, int *arrlength);
 int print_hex(va_list args, char *buffer, int *arrlength);
 int buff_push(char *buff, char c, int *arrlength);
 int print_String(va_list args, char *buffer, int *arrlength);
-
+int print_address(va_list args, char *buffer, int *arrlength);
 
 int print_hexCaps(va_list args, char *buffer, int *arrlength);
 #endif

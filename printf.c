@@ -41,7 +41,7 @@ int *select_mode(const char *format, int i, int *arr,
 		 char *buffer, int *arrlength)
 {
 	int j = 0;
-	char specs[12] = "dixXsScuob";
+	char specs[12] = "dixXsScuobp";
 
 	arr[1] = 0;
 	arr[0] = i;
@@ -97,5 +97,7 @@ int redirect(va_list args, int *p, char *buffer, int *arrlength)
 		print_hexCaps(args, buffer, arrlength);
 	if (p[1] == 'S')
 		print_String(args, buffer, arrlength);
+	if (p[1] == 'p')
+		print_address(args, buffer, arrlength);
 	return (1);
 }
