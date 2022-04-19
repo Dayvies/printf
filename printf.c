@@ -1,6 +1,6 @@
 #include "main.h"
 int *select_mode(const char *format, int i, int *arr, char *buffer, int *arrlength);
-int redirect(va_list args, int *p, char *buffer, int *arrlength);
+int redirect(va_list args, int *p, char *buffer, int *arrlength, int* arr);
 /**
  * _printf - custom printf function
  * @format : string
@@ -9,7 +9,7 @@ int redirect(va_list args, int *p, char *buffer, int *arrlength);
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, arr[2];
+	int i = 0,z, arr[9];
 	int arrlength[2] = {0, 0};
 	int *p;
 	char buffer[1024];
@@ -24,8 +24,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			for (z = 0; z < 8; z++)
+				arr[z] = 0;
 			p = select_mode(format, i + 1, arr, buffer, arrlength);
-			redirect(args, p, buffer, arrlength);
+			redirect(args, p, buffer, arrlength, arr);
 			i = p[0];
 		}
 		else
@@ -47,6 +49,7 @@ int *select_mode(const char *format, int i, int *arr,
 	arr[0] = i;
 	while (format[i])
 	{
+		j = 0;
 		while (specs[j])
 		{
 			if (specs[j] == format[i])
@@ -61,43 +64,44 @@ int *select_mode(const char *format, int i, int *arr,
 			arr[0] = i;
 			break;
 		}
+		get_flag(format, arr, i);
 		if (format[i] == '%')
 		{
 			buff_push(buffer, '%', arrlength);
 			break;
 		}
-		else
+		else if (arr[1] == 0)
 		{
 			buff_push(buffer, '%', arrlength);
 			arr[0]--;
 			break;
 		}
+		
 		i++;
 	}
 	return (arr);
 }
-int redirect(va_list args, int *p, char *buffer, int *arrlength)
+int redirect(va_list args, int *p, char *buffer, int *arrlength, int *arr)
 {
-
 	if (p[1] == 'd' || p[1] == 'i')
-		print_int(args, buffer, arrlength);
+		print_int(args, buffer, arrlength, arr);
 	if (p[1] == 's')
-		print_string(args, buffer, arrlength);
+		print_string(args, buffer, arrlength, arr);
 	if (p[1] == 'c')
-		print_char(args, buffer, arrlength);
+		print_char(args, buffer, arrlength, arr);
 	if (p[1] == 'b')
 		print_binary(args, buffer, arrlength);
 	if (p[1] == 'u')
-		print_uint(args, buffer, arrlength);
+		print_uint(args, buffer, arrlength, arr);
 	if (p[1] == 'o')
-		print_octal(args, buffer, arrlength);
+		print_octal(args, buffer, arrlength, arr);
 	if (p[1] == 'x')
-		print_hex(args, buffer, arrlength);
+		print_hex(args, buffer, arrlength, arr);
 	if (p[1] == 'X')
-		print_hexCaps(args, buffer, arrlength);
+		print_hexCaps(args, buffer, arrlength, arr);
 	if (p[1] == 'S')
 		print_String(args, buffer, arrlength);
 	if (p[1] == 'p')
-		print_address(args, buffer, arrlength);
+		print_address(args, buffer, arrlength, arr);
 	return (1);
 }
