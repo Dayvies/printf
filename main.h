@@ -22,4 +22,5 @@ int get_flag(const char *f, ul *arr, int i);
 
 int print_hexCaps(va_list args, char *buffer, int *arrlength, ul *arr);
 void print_rev(va_list args, char *buffer, int *arrlength);
+void print_rot13(va_list args, char *buffer, int *arrlength);
 #endif
