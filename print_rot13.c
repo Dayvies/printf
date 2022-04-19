@@ -10,20 +10,26 @@ void print_rot13(va_list args, char *buffer, int *arrlength)
 {
 	char a[53] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char b[53] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-	int i = 0 ,z = 0;
-	char *s1 = va_arg(args,char *);
+	int i = 0, z = 0;
+	char *s1 = va_arg(args, char *);
 
+	if (s1)
+		s1 = "(null)";
 	while (s1[i] != '\0')
 	{
-		for (z = 0 ; z < 52; z++)
+		if (s1[i] < 'A' || (s1[i] > 'Z' && s1[i] < 'a') || s1[i] > 'z')
+			buff_push(buffer, s1[i], arrlength);
+		else
 		{
-			if (s1[i] == a[z])
+			for (z = 0; z < 52; z++)
 			{
-				buff_push(buffer,b[z], arrlength);
-				break;
+				if (s1[i] == a[z])
+				{
+					buff_push(buffer, b[z], arrlength);
+					break;
+				}
 			}
 		}
 		i++;
 	}
-
 }
