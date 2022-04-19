@@ -43,7 +43,7 @@ int print_address(va_list args, char *buffer, int *arrlength, ul *arr)
 
 	if ((arr[6] == 0 || arr[4] == 1 || arr[7] < len) && (ib > 0))
 		print_str(str, buffer, arrlength, 1, arr);
-	printa(hexs, buffer, arrlength, j, arr);
+	printa(hexs, buffer, arrlength, j);
 	print_spaces7(arr, len, 1, buffer, arrlength);
 	free(hexs);
 	return (1);
