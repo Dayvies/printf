@@ -7,7 +7,7 @@ int nonprint(char c, char *buffer, int *arrlength);
  */
 int print_String(va_list args, char *buffer, int *arrlength)
 {
-	int i = 0, j = 0, sum = 0;
+	int i = 0;
 	char *str;
 
 	str = va_arg(args, char *);
@@ -15,7 +15,7 @@ int print_String(va_list args, char *buffer, int *arrlength)
 		str = "(null)";
 	while (str[i] != '\0')
 	{
-		if(str[i] < 32 && str[i] > 0 || str[i] >= 127)
+		if((str[i] < 32 && str[i] > 0) || str[i] >= 127)
 			nonprint(str[i], buffer , arrlength);
 		else
 			buff_push(buffer, str[i], arrlength);		
@@ -25,13 +25,12 @@ int print_String(va_list args, char *buffer, int *arrlength)
 }
 int nonprint(char c, char *buffer, int *arrlength)
 {
-	int j,z, i;
+	int z, i;
+	int *hexs;
+
 	i = c;
-	
 	buff_push(buffer,'\\', arrlength);
 	buff_push(buffer,'x', arrlength);
-
-	int *hexs;
 	hexs = malloc(sizeof(int) * (2));
 	hexs[1] = 0;
 
@@ -48,4 +47,5 @@ int nonprint(char c, char *buffer, int *arrlength)
 		else
 			buff_push(buffer, hexs[z] + '0', arrlength);
 	}
+	return (0);
 }
