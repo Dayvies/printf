@@ -9,7 +9,7 @@ int print_address(va_list args, char *buffer, int *arrlength)
 {
 	unsigned long int i , j = 0, z, l = 0;
 	char *str;
-	int *hexs;
+	unsigned int *hexs;
 
 	str = "(nil)";
 	i = va_arg(args, unsigned long int);
@@ -23,7 +23,7 @@ int print_address(va_list args, char *buffer, int *arrlength)
 		z = z / 10;
 		j++;
 	}
-	hexs = malloc(sizeof(int) * (j));
+	hexs = malloc(sizeof(unsigned int) * (j));
 	for (z = 0; z < j; z++)
 		hexs[z] = 0;
 
