@@ -7,7 +7,7 @@ int print_str(char *s, char *buffer, int *arrlength);
  */
 int print_address(va_list args, char *buffer, int *arrlength)
 {
-	unsigned long int i = 0, j = 0, z, l = 0;
+	unsigned long int i , j = 0, z, l = 0;
 	char *str;
 	int *hexs;
 
