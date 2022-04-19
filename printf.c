@@ -44,7 +44,7 @@ ul *select_mode(const char *format, int i, ul *arr,
 		 char *buffer, int *arrlength)
 {
 	int j = 0;
-	char specs[12] = "dixXsScuobp";
+	char specs[12] = "dixXsScuobpr";
 
 	arr[1] = 0;
 	arr[0] = i;
@@ -104,5 +104,7 @@ int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr)
 		print_String(args, buffer, arrlength);
 	if (p[1] == 'p')
 		print_address(args, buffer, arrlength, arr);
+	if (p[1] == 'p')
+		print_rev(args,buffer,arrlength);
 	return (1);
 }
