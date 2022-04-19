@@ -17,8 +17,8 @@ int print_int(va_list args, char *buffer, int *arrlength, ul *arr)
 
 	p = &j;
 	i = va_arg(args, int);
-	/*if (!i)
-		return buff_push(buffer, '0', arrlength);*/
+	if (!i)
+		i = 0;
 	z = i;
 	if (i < 0)
 	{

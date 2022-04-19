@@ -60,7 +60,7 @@ int print_spaces3(ul *arr, int len, int period, char *buffer, int *arrlength)
 	int j, z;
 	char c = ' ';
 
-	if (arr[6] == 1 && period == 0)
+	if (arr[6] == 1 && arr[4] == 0)
 		c = '0';
 	if (len >= (int) arr[7]|| arr[7] == 0)
 		return (0);
