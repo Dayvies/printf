@@ -24,6 +24,8 @@ int print_address(va_list args, char *buffer, int *arrlength)
 		j++;
 	}
 	hexs = malloc(sizeof(int) * (j));
+	for (z = 0; z < j; z++)
+		hexs[z] = 0;
 
 	for (z = j - 1; i > 0; z--)
 	{
