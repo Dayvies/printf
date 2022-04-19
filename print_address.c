@@ -42,7 +42,7 @@ int print_address(va_list args, char *buffer, int *arrlength)
 			l = 1;
 		if (hexs[z] > 9)
 			buff_push(buffer, hexs[z] + '0' + 39, arrlength);
-		else if (hexs[z] < 10 && hexs[z] >= 0)
+		else if (hexs[z] < 10 )
 			buff_push(buffer, hexs[z] + '0', arrlength);
 	}
 	free(hexs);
