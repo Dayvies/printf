@@ -3,9 +3,12 @@ int print_spaces5(ul *arr, int len, int p, char *buffer, int *length);
 int getlength4(ul *arr, int *hexs, int j);
 void print2(int *hexs, char *buffer, int *arrlength, int j);
 /**
- * print_binary - print binary from unsigned int
+ * print_hexCaps - print binary from unsigned int
  * @args : args
- * Return : number of printed characters
+ * @buffer : buff
+ * @arrlength : length array
+ * @arr : array
+ * Return: number of printed characters
  */
 int print_hexCaps(va_list args, char *buffer, int *arrlength, ul *arr)
 {
@@ -42,19 +45,22 @@ int print_hexCaps(va_list args, char *buffer, int *arrlength, ul *arr)
 	}
 	if (ib == 0)
 		buff_push(buffer, '0', arrlength);
-	print2(hexs,buffer, arrlength,j);
+	print2(hexs, buffer, arrlength, j);
 	print_spaces5(arr, len, 1, buffer, arrlength);
 	free(hexs);
 	return (0);
 }
 /**
- * getlength- length
- * @z: number
+ * getlength4- length
+ * @hexs: malloc array
+ * @arr : array
+ * @j : j
  * Return: length
  */
 int getlength4(ul *arr, int *hexs, int j)
 {
 	int i = 0, l = 0, count = 0;
+
 	for (i = 0; i < j; i++)
 	{
 
@@ -70,12 +76,12 @@ int getlength4(ul *arr, int *hexs, int j)
 	return (count);
 }
 /**
- * print_spaces4- print spaces or 0s
+ * print_spaces5- print spaces or 0s
  * @arr : array
  * @len : length
- * @period : period
+ * @p : period
  * @buffer : bufffer
- * @arrlength : arrlength
+ * @length : arrlength
  * Return: int
  */
 int print_spaces5(ul *arr, int len, int p, char *buffer, int *length)
@@ -85,7 +91,7 @@ int print_spaces5(ul *arr, int len, int p, char *buffer, int *length)
 
 	if (arr[6] == 1 && p == 0)
 		c = '0';
-	if (len >= (int) arr[7] || arr[7] == 0)
+	if (len >= (int)arr[7] || arr[7] == 0)
 		return (0);
 	if (p == 0 && arr[4] == 1)
 		return (0);
@@ -97,15 +103,23 @@ int print_spaces5(ul *arr, int len, int p, char *buffer, int *length)
 		buff_push(buffer, 'X', length);
 	}
 	j = arr[7] - len;
-	
-	
+
 	for (z = 0; z < j; z++)
-		buff_push(buffer, c, length);	
+		buff_push(buffer, c, length);
 	return (0);
 }
+/**
+ * print2- print spaces or 0s
+ * @hexs : array
+ * @buffer : bufffer
+ * @arrlength : arrlength
+ * @j : j
+ * Return: int
+ */
 void print2(int *hexs, char *buffer, int *arrlength, int j)
-{	
-	int z , l = 0;
+{
+	int z, l = 0;
+
 	for (z = 0; z < j; z++)
 	{
 		if (hexs[z] == 0 && l == 0)
@@ -117,5 +131,4 @@ void print2(int *hexs, char *buffer, int *arrlength, int j)
 		else
 			buff_push(buffer, hexs[z] + '0', arrlength);
 	}
-
 }

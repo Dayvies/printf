@@ -3,9 +3,9 @@
 /**
  * buff_push - push character to end of buff array
  * @buff : buffer
- * c : char too be stored
+ * @c : char too be stored
  * @arrlength : pointer to length
- * Return; 1 if successfull
+ * Return: 1 if successfull
  */
 int buff_push(char *buff, char c, int *arrlength)
 {

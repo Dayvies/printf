@@ -1,9 +1,11 @@
 #include "main.h"
 int nonprint(char c, char *buffer, int *arrlength);
 /**
- * print_string - print a string char
+ * print_String - print a string char
  * @args : args
- * Return : 1 if succesfull
+ * @buffer : bufffer
+ * @arrlength : arrlength
+ * Return: 1 if succesfull
  */
 int print_String(va_list args, char *buffer, int *arrlength)
 {
@@ -15,22 +17,29 @@ int print_String(va_list args, char *buffer, int *arrlength)
 		str = "(null)";
 	while (str[i] != '\0')
 	{
-		if((str[i] < 32 && str[i] > 0) || str[i] >= 127)
-			nonprint(str[i], buffer , arrlength);
+		if ((str[i] < 32 && str[i] > 0) || str[i] >= 127)
+			nonprint(str[i], buffer, arrlength);
 		else
-			buff_push(buffer, str[i], arrlength);		
+			buff_push(buffer, str[i], arrlength);
 		i++;
 	}
 	return (1);
 }
+/**
+ * nonprint - print hexa for nonprintables *
+ * @c: c
+ * @buffer: bufffer
+ * @arrlength: arrlength
+ * Return: return
+ */
 int nonprint(char c, char *buffer, int *arrlength)
 {
 	int z, i;
 	int *hexs;
 
 	i = c;
-	buff_push(buffer,'\\', arrlength);
-	buff_push(buffer,'x', arrlength);
+	buff_push(buffer, '\\', arrlength);
+	buff_push(buffer, 'x', arrlength);
 	hexs = malloc(sizeof(int) * (2));
 	hexs[1] = 0;
 
@@ -41,7 +50,7 @@ int nonprint(char c, char *buffer, int *arrlength)
 	}
 	for (z = 0; z < 2; z++)
 	{
-		
+
 		if (hexs[z] >= 10)
 			buff_push(buffer, hexs[z] + '0' + 7, arrlength);
 		else

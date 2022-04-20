@@ -5,6 +5,9 @@
 #include <stdio.h>
 int _putchar(char c);
 int buffchar(char *buffer, int length);
+/**
+ * typedef unsigned long int ul - unsigned long int
+ */
 typedef unsigned long int ul;
 
 int print_char(va_list args, char *buffer, int *arrlength, ul *arr);

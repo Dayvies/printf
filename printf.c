@@ -1,11 +1,11 @@
 #include "main.h"
-ul *select_mode(const char *format, int i, unsigned long int *arr, char *buffer, int *arrlength);
+ul *mode(const char *format, int i, ul *arr, char *buffer, int *arrlength);
 int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr);
 /**
  * _printf - custom printf function
  * @format : string
  * @... : ellipsis
- *  Return : number of characters printed
+ *  Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		{
 			for (z = 0; z < 8; z++)
 				arr[z] = 0;
-			p = select_mode(format, i + 1, arr, buffer, arrlength);
+			p = mode(format, i + 1, arr, buffer, arrlength);
 			redirect(args, p, buffer, arrlength, arr);
 			i = p[0];
 		}
@@ -40,8 +40,17 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (arrlength[0] + i);
 }
-ul *select_mode(const char *format, int i, ul *arr,
-		char *buffer, int *arrlength)
+/**
+ * select_mode - select flags and specifiers
+ * @format : format
+ * @i : i
+ * @arr : array
+ * @buffer : buffer
+ * @arrlength : arrlength
+ * Return: pointer
+ */
+ul *mode(const char *format, int i, ul *arr,
+	 char *buffer, int *arrlength)
 {
 	int j = 0;
 	char specs[14] = "dixXsScuobprR";
@@ -82,6 +91,15 @@ ul *select_mode(const char *format, int i, ul *arr,
 	}
 	return (arr);
 }
+/**
+ * redirect - takes you places
+ * @args : args
+ * @p: pointer
+ * @buffer : buffer
+ * @arrlength : arrlength
+ * @arr : arr
+ * Return: int
+ */
 int redirect(va_list args, ul *p, char *buffer, int *arrlength, ul *arr)
 {
 	if (p[1] == 'd' || p[1] == 'i')

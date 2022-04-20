@@ -1,9 +1,12 @@
 #include "main.h"
 int print_spaces(ul *arr, int len, int period, char *buffer, int *arrlength);
 /**
- * print_char - print one char
+ * print_char- print char
  * @args : args
- * Return : 1 if succesfull
+ * @buffer : buff
+ * @arrlength : length array
+ * @arr : array
+ * Return: number of printed characters
  */
 int print_char(va_list args, char *buffer, int *arrlength, ul *arr)
 {
@@ -16,10 +19,20 @@ int print_char(va_list args, char *buffer, int *arrlength, ul *arr)
 	print_spaces(arr, 1, period, buffer, arrlength);
 	return (1);
 }
+/**
+ * print_spaces- print address
+ * @arrlength: malloc array
+ * @arr : array
+ * @len : j
+ * @buffer: buffer
+ * @period: period
+ * Return: void
+ */
 int print_spaces(ul *arr, int len, int period, char *buffer, int *arrlength)
 {
 	int j, z;
-	if (1 >= arr[7] || arr[7] == 0)
+
+	if (arr[7] >= 1 || arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);

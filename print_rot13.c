@@ -1,8 +1,10 @@
 #include "main.h"
 
 /**
- * rot13 - plus 13
- * @s1 : string
+ * print_rot13 - plus 13
+ * @args: arguments
+ * @buffer: buffer
+ * @arrlength: buffer length
  * Return: string
  * On error, 0 is returned, and errno is set appropriately.
  */

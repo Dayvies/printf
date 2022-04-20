@@ -7,7 +7,8 @@ int print_spaces2(ul *arr, int len, int period, char *buffer, int *arrlength);
  * @args : args
  * @buffer: buffer
  * @arrlength: buffer length
- * Return : nu,ber of int if succesfull
+ * @arr: array
+ * Return: number of int if succesfull
  */
 int print_int(va_list args, char *buffer, int *arrlength, ul *arr)
 {
@@ -43,14 +44,19 @@ int print_int(va_list args, char *buffer, int *arrlength, ul *arr)
 	period = 1;
 	print_spaces2(arr, len, period, buffer, arrlength);
 	return (1);
-} /**
-   * getlength- length
-   * @z: number
-   * Return: length
-   */
+}
+/**
+ * getlength - length
+ * @z: number
+ * @negative: negative
+ * @arr: arr
+ * @j : j
+ * Return: length
+ */
 int getlength(unsigned int z, int negative, ul *arr, int *j)
 {
 	int l = 0;
+
 	while (z > 9)
 	{
 		z = z / 10;
@@ -64,12 +70,12 @@ int getlength(unsigned int z, int negative, ul *arr, int *j)
 }
 /**
  * print_spaces2 - print spaces or 0s
- * @arr : array 
- * @len : length 
+ * @arr : array
+ * @len : length
  * @period : period
- * @buffer : bufffer 
+ * @buffer : bufffer
  * @arrlength : arrlength
- * Return: int 
+ * Return: int
  */
 int print_spaces2(ul *arr, int len, int period, char *buffer, int *arrlength)
 {
@@ -78,7 +84,7 @@ int print_spaces2(ul *arr, int len, int period, char *buffer, int *arrlength)
 
 	if (arr[6] == 1 && arr[4] == 0)
 		c = '0';
-	if (len >= (int) arr[7] || arr[7] == 0)
+	if (len >= (int)arr[7] || arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);

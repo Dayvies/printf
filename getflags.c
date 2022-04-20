@@ -5,8 +5,8 @@ int isnum(char c);
  * get_flag - get's flags
  * @arr : arr
  * @f: String
- * i: current position
- *
+ * @i: current position
+ * Return: int
  */
 int get_flag(const char *f, ul *arr, int i)
 {
@@ -49,9 +49,9 @@ int get_flag(const char *f, ul *arr, int i)
 	return (0);
 }
 /**
- * isnumber - checks if number
+ * isnum - checks if number
  * @c : character
- * Returns : 1 if number 0 if not number
+ * Return: 1 if number 0 if not number
  */
 int isnum(char c)
 {

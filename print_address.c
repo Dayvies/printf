@@ -4,9 +4,12 @@ int getlength6(ul *hexs, int j, ul *arr);
 void printa(ul *hexs, char *buffer, int *arrlength, int j);
 int print_spaces7(ul *arr, int len, int p, char *buffer, int *length);
 /**
- * print_binary - print binary from unsigned int
+ * print_address - print binary from unsigned int
  * @args : args
- * Return : number of printed characters
+ * @buffer : buff
+ * @arrlength : length array
+ * @arr : array
+ * Return: number of printed characters
  */
 int print_address(va_list args, char *buffer, int *arrlength, ul *arr)
 {
@@ -48,6 +51,15 @@ int print_address(va_list args, char *buffer, int *arrlength, ul *arr)
 	free(hexs);
 	return (1);
 }
+/**
+ * print_str - print string
+ * @s: string
+ * @buffer : hold everything
+ * @arrlength : length
+ * @r : r
+ * @arr : array
+ * Return: integer
+ */
 int print_str(char *s, char *buffer, int *arrlength, ul r, ul *arr)
 {
 	int i = 0;
@@ -68,13 +80,16 @@ int print_str(char *s, char *buffer, int *arrlength, ul r, ul *arr)
 	return (0);
 }
 /**
- * getlength- length
- * @z: number
+ * getlength6- length
+ * @hexs: malloc array
+ * @arr : array
+ * @j : j
  * Return: length
  */
 int getlength6(ul *hexs, int j, ul *arr)
 {
 	int i = 0, l = 0, count = 0;
+
 	for (i = 0; i < j; i++)
 	{
 
@@ -92,6 +107,14 @@ int getlength6(ul *hexs, int j, ul *arr)
 		count = 5;
 	return (count);
 }
+/**
+ * printa- print address
+ * @hexs: malloc array
+ * @buffer : buff
+ * @arrlength :arrlength
+ * @j : j
+ * Return: void
+ */
 void printa(ul *hexs, char *buffer, int *arrlength, int j)
 {
 	int z, l = 0;
@@ -108,6 +131,15 @@ void printa(ul *hexs, char *buffer, int *arrlength, int j)
 			buff_push(buffer, hexs[z] + '0', arrlength);
 	}
 }
+/**
+ * print_spaces7- print address
+ * @length: malloc array
+ * @arr : array
+ * @len : j
+ * @buffer: buffer
+ * @p: period
+ * Return: void
+ */
 int print_spaces7(ul *arr, int len, int p, char *buffer, int *length)
 {
 	int j, z;

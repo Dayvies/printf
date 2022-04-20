@@ -4,7 +4,10 @@ int print_spaces3(ul *arr, int len, int period, char *buffer, int *arrlength);
 /**
  * print_uint - print an undigned integer
  * @args : args
- * Return : nu,ber of int if succesfull
+ * @buffer : bufffer
+ * @arrlength : arrlength
+ * @arr : array
+ * Return: nu,ber of int if succesfull
  */
 int print_uint(va_list args, char *buffer, int *arrlength, ul *arr)
 {
@@ -19,23 +22,25 @@ int print_uint(va_list args, char *buffer, int *arrlength, ul *arr)
 	z = i;
 	l = getlength2(z, p);
 	print_spaces3(arr, l, period, buffer, arrlength);
-	for (z = 0;j >= 1; z++)
+	for (z = 0; j >= 1; z++)
 	{
 		buff_push(buffer, (i / j) + '0', arrlength);
 		i = i % j;
 		j = j / 10;
 	}
-	print_spaces3(arr, l,1, buffer, arrlength);
+	print_spaces3(arr, l, 1, buffer, arrlength);
 	return (1);
 }
 /**
- * getlength- length
+ * getlength2 - length
  * @z: number
+ * @j : j
  * Return: length
  */
 int getlength2(unsigned int z, unsigned int *j)
 {
 	int l = 0;
+
 	while (z > 9)
 	{
 		z = z / 10;
@@ -47,7 +52,7 @@ int getlength2(unsigned int z, unsigned int *j)
 	return (l);
 }
 /**
- * print_spaces2 - print spaces or 0s
+ * print_spaces3 - print spaces or 0s
  * @arr : array
  * @len : length
  * @period : period
@@ -62,7 +67,7 @@ int print_spaces3(ul *arr, int len, int period, char *buffer, int *arrlength)
 
 	if (arr[6] == 1 && arr[4] == 0)
 		c = '0';
-	if (len >= (int) arr[7]|| arr[7] == 0)
+	if (len >= (int)arr[7] || arr[7] == 0)
 		return (0);
 	if (period == 0 && arr[4] == 1)
 		return (0);
