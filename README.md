@@ -1,5 +1,5 @@
-<hi>Printf</h1>
-<strong>Description</strong>
+<h1>Printf\n</h1>
+<strong>Description\n</strong>
 int printf(const char *format, ...) sends formatted output to stdout.
 
 <strong>int printf(const char *format, ...)</strong>
